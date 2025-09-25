@@ -21,6 +21,11 @@ div img{
     width: 50%;
 }
 
+div img:hover{
+    transform: scale(1.1);
+    transition: all 0.5s;
+}
+
 p:hover{
-    color: #F2A2CE;
+    color: #7C9AA6;
 }
