@@ -1,31 +1,191 @@
-*{
-    background-color: #262626;
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/static/Inter-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-h1{
-    color: #F2A2CE;
-    text-align: center;
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/static/Inter-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 
-p{
-    text-align: center;
-    font-family: verdana;
-    font-size: 20px;
-    color: #D9D9D9;
+:root {
+  --soft-orange: hsl(35, 77%, 62%);
+  --soft-red: hsl(5, 85%, 63%);
+  --off-white: hsl(36, 100%, 99%);
+  --grayish-blue: hsl(233, 8%, 79%);
+  --dark-grayish-blue: hsl(236, 13%, 42%);
+  --very-dark-blue: hsl(240, 100%, 5%);
+  --primary-font: "Inter", "Inter Variable", system-ui, -apple-system,
+    sans-serif;
+}
+* {
+  background-color: var(--off-white);
+  padding: 0%;
+  margin: 0;
+  font-family: var(--primary-font);
 }
 
-div img{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
+.container {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 5%;
 }
 
-div img:hover{
-    transform: scale(1.1);
-    transition: all 0.5s;
+header {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 30px;
 }
 
-p:hover{
-    color: #7C9AA6;
+header span {
+  width: 200px;
+}
+
+.container .hero img {
+  margin-top: 5;
+  width: 100%;
+  height: 450px;
+}
+
+header .nav a {
+  text-decoration: none;
+  color: var(--dark-grayish-blue);
+  margin: 10px;
+}
+
+header .nav a:hover {
+  color: var(--soft-red);
+}
+
+article {
+  padding-bottom: 20px;
+}
+
+article h1 {
+  width: 420px;
+  font-size: 3rem;
+  padding-bottom: 10px;
+  font-weight: 700;
+}
+article button {
+  background-color: var(--soft-red);
+  color: var(--very-dark-blue);
+  font-weight: bold;
+  border: 2px solid var(--soft-red);
+  padding: 8px 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.4s;
+}
+
+article button:hover {
+  background-color: var(--very-dark-blue);
+  color: var(--off-white);
+}
+
+main .cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 20px 0;
+}
+
+main .cards .card {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+main .cards .card .image {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 15px;
+}
+
+main .cards .card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+main .cards .card .text {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+main .cards .card .text p {
+  padding-bottom: 10px;
+}
+
+main .cards .card .text span {
+  font-weight: bold;
+  color: var(--soft-orange);
+}
+
+main .cards .card button {
+  background-color: var(--soft-red);
+  color: var(--very-dark-blue);
+  font-weight: bold;
+  border: 2px solid var(--soft-red);
+  padding: 8px 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.4s;
+}
+
+main .cards .card button:hover {
+  background-color: var(--very-dark-blue);
+  color: var(--off-white);
+}
+
+/* Footer */
+footer {
+  width: 100%;
+  background-color: var(--very-dark-blue);
+  color: var(--off-white);
+  padding: 40px 0;
+  margin-top: 50px;
+}
+
+.footer-container {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-social {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-social a {
+  color: var(--dark-grayish-blue);
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+  color: var(--soft-orange);
+}
+
+.footer-logo img {
+  margin: 10px;
+  height: 30px;
+  width: auto;
+}
+
+.footer-copy p {
+  margin: 0;
+  color: var(--grayish-blue);
+  font-size: 0.9rem;
 }
