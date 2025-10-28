@@ -471,6 +471,56 @@ main .cards .card button:hover {
     justify-content: center;
   }
 }
+/* diseño responsive con grid */
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .container .hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .container .hero .hero-text {
+    order: 2;
+    margin: 0 auto;
+  }
+
+  .container .hero .hero-image {
+    order: 1;
+    margin: 0 auto;
+    width: 80%;
+  }
+
+  main .cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 10px 0;
+  }
+
+  main .cards .card {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .contact {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .contact form {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
 
 /* Footer */
 footer {
