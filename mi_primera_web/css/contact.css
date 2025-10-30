@@ -1,9 +1,25 @@
+/* Box sizing reset (prevents padding/border from increasing element's visual width) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 * {
   padding: 0;
   margin: 0;
-  background-color: var(--off-white);
   font-family: var(--secundary-font);
+}
 
+body {
+  background-color: var(--off-white);
+}
+
+/* Make images responsive by default */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* hero section  */
@@ -22,7 +38,6 @@ header .nav a {
 }
 
 .hero {
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,7 +47,6 @@ header .nav a {
   background-size: contain;
 }
 
-
 .hero .hero-section {
   display: flex;
   flex-direction: column;
@@ -40,17 +54,12 @@ header .nav a {
   background-color: transparent;
   font-family: var(--secundary-font);
   padding-bottom: 10px;
-
-
 }
 
-
 .hero h1 {
-
   color: var(--very-dark-blue);
-  font-size: 56px;
+  font-size: clamp(1.8rem, 2.4vw + 1rem, 56px);
   background-color: transparent;
-
 }
 
 .hero p {
@@ -112,7 +121,7 @@ header .nav a {
 
 .form-group input,
 .form-group textarea {
-  width: 95%;
+  width: 100%;
   padding: 12px 16px;
   border: 2px solid var(--grayish-blue);
   border-radius: 4px;
@@ -206,4 +215,17 @@ header .nav a {
   border: 2px solid var(--grayish-blue);
   border-radius: 8px;
   background-color: var(--grayish-blue);
+}
+
+@media (max-width: 900px) {
+  .contact-container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero .hero-section {
+    width: 80%;
+    text-align: center;
+  }
 }
