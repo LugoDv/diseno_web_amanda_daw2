@@ -81,7 +81,17 @@
         </div>
         <section class="call-to-action">
           <div class="img-action">
-            <img src="./assets/SVG/astro_cta.svg" alt="" srcset="" />
+            <!--6.3 implemento picture para cambiar la imagen segun la resolución -->
+            <picture>
+              <source
+                srcset="
+                  ./assets/SVG/Gemini_Generated_Image_he2o5the2o5the2o-removebg-preview.png
+                "
+                media="(max-width:900px)"
+              />
+              <source srcset="./assets/SVG/astro_cta.svg" />
+              <img src="./assets/SVG/astro_cta.svg" alt="" srcset="" />
+            </picture>
           </div>
           <div class="action">
             <h2>¿Listo para comenzar tu viaje tecnológico?</h2>

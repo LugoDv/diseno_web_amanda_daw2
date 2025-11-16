@@ -71,6 +71,7 @@ body {
 }
 
 /* Responsive images by default */
+/* 6.1 aplico max-width y height auto a todas las imágenes  */
 img {
   max-width: 100%;
   height: auto;
@@ -135,6 +136,7 @@ header span {
   background-color: transparent;
   color: var(--off-white);
   max-width: 500px;
+  padding-left: 2rem;
 }
 .container .hero .hero-text h1 {
   font-size: 3rem;
@@ -491,6 +493,9 @@ main .cards .card button:hover {
   .contact .actions {
     justify-content: center;
   }
+
+  .hero-text {
+  }
 }
 /* diseño responsive con grid */
 @media (max-width: 768px) {
@@ -537,15 +542,28 @@ main .cards .card button:hover {
   }
 
   main .cards .card {
+    justify-content: center;
+    align-items: center;
     width: 100%;
     margin: 0 auto;
   }
 
+  main .cards .card .text {
+    text-align: center;
+  }
+
   .call-to-action {
+    display: flex;
+    flex-wrap: wrap;
     text-align: center;
     padding: 40px 20px;
     background-color: var(--soft-orange);
     border-radius: 8px;
+  }
+
+  .call-to-action h2 {
+    width: auto;
+    font-size: 2rem;
   }
 
   .img-action {
