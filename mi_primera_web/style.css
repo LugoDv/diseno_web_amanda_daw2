@@ -46,8 +46,8 @@
   --grayish-blue: #e4e7eb;
   --dark-grayish-blue: #8a8894;
   --very-dark-blue: #212121;
-  --primary-font: "Inter", "Inter Variable", system-ui, -apple-system,
-    sans-serif;
+  --primary-font:
+    "Inter", "Inter Variable", system-ui, -apple-system, sans-serif;
   --secundary-font: "Roboto", sans-serif;
 }
 
@@ -148,13 +148,15 @@ header span {
 
   /* fondo base + patrón de puntos en una sola regla (evita redundancia) */
   background-color: var(--very-dark-blue);
-  background-image: radial-gradient(
-      rgba(255, 255, 255, 0.12) 2px,
-      transparent 0
-    ),
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.12) 2px, transparent 0),
     linear-gradient(135deg, rgba(49, 49, 49, 0.9), rgba(33, 33, 33, 0.95));
-  background-size: 30px 30px, cover;
-  background-position: -5px -5px, center;
+  background-size:
+    30px 30px,
+    cover;
+  background-position:
+    -5px -5px,
+    center;
 }
 
 .container .hero::before {
@@ -244,7 +246,10 @@ article h1 {
   text-decoration: none;
   text-align: center;
   line-height: 1;
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    border-color 0.2s;
   border-radius: 6px;
 }
 
@@ -285,7 +290,9 @@ article button {
   padding: 8px 30px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
   border-radius: 6px;
 }
 
@@ -350,7 +357,9 @@ main .cards .card button {
   padding: 8px 30px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
   border-radius: 6px;
 }
 
@@ -398,21 +407,95 @@ main .cards .card button:hover {
   font-weight: 700;
   margin-left: 20px;
 }
-.contact {
-  width: 100%;
+
+/* Video Section */
+.video-section {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  padding: 56px 0;
-  margin-top: 50px;
-  display: flex;
-  justify-content: center;
+  gap: 40px;
+  padding: 60px 20px;
+  margin: 50px auto 0;
+  max-width: 1024px;
+  width: 100%;
   background-color: transparent;
+}
+
+.video-text {
+  flex: 1;
+}
+
+.video-text h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--very-dark-blue);
+  margin-bottom: 20px;
+}
+
+.video-text p {
+  font-size: 1.1rem;
+  color: var(--dark-grayish-blue);
+  line-height: 1.6;
+}
+
+.video-container {
+  flex: 1;
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(33, 33, 33, 0.15);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .video-section {
+    max-width: 100%;
+    padding: 50px 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .video-section {
+    flex-direction: column;
+    padding: 40px 20px;
+    gap: 30px;
+  }
+
+  .video-text {
+    text-align: center;
+  }
+
+  .video-text h2 {
+    font-size: 1.75rem;
+  }
+
+  .video-text p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-section {
+    padding: 30px 15px;
+  }
+
+  .video-text h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  .video-container video {
+    border-radius: 8px;
+  }
 }
 
 .contact {
   width: 94%;
   max-width: 1100px;
+  margin: 50px auto 0;
   background-color: var(--off-white);
   border-radius: 14px;
   padding: 28px 36px;
@@ -473,7 +556,9 @@ main .cards .card button:hover {
   color: var(--very-dark-blue);
   font-family: var(--secundary-font);
   font-size: 1rem;
-  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
 }
 
 .contact input:focus,
@@ -508,7 +593,10 @@ main .cards .card button:hover {
   text-decoration: none;
   text-align: center;
   line-height: 1;
-  transition: background 0.18s, color 0.18s, transform 0.12s;
+  transition:
+    background 0.18s,
+    color 0.18s,
+    transform 0.12s;
   border-radius: 8px;
 }
 
@@ -572,6 +660,13 @@ main .cards .card button:hover {
 
   .container .hero .hero-image {
     order: 1;
+    margin: 0 auto;
+  }
+
+  .main {
+    width: 60%;
+    max-width: 1024px;
+
     margin: 0 auto;
   }
 
