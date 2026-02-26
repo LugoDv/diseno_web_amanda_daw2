@@ -21,7 +21,17 @@ Este proyecto es una pequeña página web estática creada como ejercicio de dis
 
 - `index.html` — página principal.
 - `contact.html` — página de contacto.
+- `sugerencias.html` — página de sugerencias.
 - `style.css` — estilos generales del sitio.
 - `css/contact.css` — estilos específicos para la página de contacto.
 
 Los estilos base están escritos pensando en escritorio; las media queries se añadieron en los archivos CSS (principalmente en `style.css` y en `css/contact.css`) para ajustar el layout, fuentes, tamaños y espaciados en pantallas más pequeñas.
+
+## Uso de jQuery
+
+Este proyecto utiliza jQuery para:
+- Manipulación del DOM.
+- Manejo de eventos.
+- Funcionalidades interactivas en el frontend.
+
+Se incluye una versión de jQuery a través de un CDN en los archivos HTML (`index.html`, `sugerencias.html`). Además, se utiliza un archivo `jquery.js` local para la lógica personalizada del proyecto que depende de jQuery.
