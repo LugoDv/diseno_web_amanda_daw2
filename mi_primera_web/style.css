@@ -596,17 +596,7 @@ main .cards .card button:hover {
   overflow: visible;
 }
 
-.contact .card::before {
-  /* vertical accent strip */
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 10px;
-  border-radius: 14px 0 0 14px;
-  background: linear-gradient(180deg, var(--soft-orange), var(--soft-red));
-}
+
 
 .contact h2 {
   font-size: 2rem;

@@ -5,9 +5,9 @@ const translations = {
     en: "Home",
   },
   "nav-cursos": {
-    ca: "Cursos",
-    es: "Cursos",
-    en: "Courses",
+    ca: "suggeriments",
+    es: "Sugerencias",
+    en: "Suggestions",
   },
   "nav-contacto": {
     ca: "Contacte",
