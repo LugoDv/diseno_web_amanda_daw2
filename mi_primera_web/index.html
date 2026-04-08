@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./css/interactividad_practica13.css" />
     <title>Lugo tech</title>
     <link
       rel="shortcut icon"
@@ -126,9 +127,39 @@
             </video>
           </div>
         </section>
-          
-
         
+        <!-- SECCIÓN DE ESTADÍSTICAS - TASAS DE INSERCIÓN LABORAL -->
+        <section class="stats-section">
+          <div class="stats-container">
+            <!-- Encabezado -->
+            <div class="stats-header">
+              <h2>Resultados de Nuestros Cursos</h2>
+              <p>Descubre cómo nuestros estudiantes se insertan en el mercado laboral</p>
+            </div>
+
+            <!-- Controles (Botones) -->
+            <div class="stats-controls">
+              <button class="stats-btn active" data-metric="insertion" type="button">
+                Tasa de Inserción Laboral
+              </button>
+              <button class="stats-btn" data-metric="students" type="button">
+                Número de Estudiantes
+              </button>
+            </div>
+
+            <!-- Canvas para el gráfico -->
+            <div class="chart-wrapper">
+              <canvas id="coursesChart"></canvas>
+            </div>
+
+            <!-- Info adicional -->
+            <div class="stats-info">
+              <p><small>Los datos se actualizan mensualmente</small></p>
+            </div>
+          </div>
+        </section>
+
+         
         <section class="contact">
           <h2 id="contact-title">Contacto</h2>
           <form action="#" method="post">
@@ -170,8 +201,12 @@
         </div>
       </footer>
     </div>
+    <!-- CDN de Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="script.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="jquery.js"></script>
+    <!-- Script de interactividad para el gráfico -->
+    <script src="./js/interactividad_practica13.js"></script>
   </body>
 </html>

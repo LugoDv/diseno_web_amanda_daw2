@@ -1,0 +1,279 @@
+/* ============================================================
+   SECCIÓN DE ESTADÍSTICAS - TASAS DE INSERCIÓN LABORAL
+   ============================================================ */
+
+/* Contenedor principal de la sección */
+.stats-section {
+  width: 100%;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, var(--soft-gray) 0%, var(--off-white) 100%);
+  margin: 40px 0;
+}
+
+.stats-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  animation: fade-in-top 0.8s ease;
+}
+
+/* ============================================================
+   ENCABEZADO DE ESTADÍSTICAS
+   ============================================================ */
+
+.stats-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.stats-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--very-dark-blue);
+  margin-bottom: 12px;
+  font-family: var(--primary-font);
+}
+
+.stats-header p {
+  font-size: 1rem;
+  color: var(--dark-grayish-blue);
+  font-weight: 400;
+}
+
+/* ============================================================
+   CONTROLES (BOTONES)
+   ============================================================ */
+
+.stats-controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.stats-btn {
+  padding: 12px 24px;
+  border: 2px solid var(--grayish-blue);
+  background-color: var(--off-white);
+  color: var(--very-dark-blue);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--secundary-font);
+  position: relative;
+  overflow: hidden;
+}
+
+.stats-btn:hover {
+  border-color: var(--soft-orange);
+  color: var(--soft-orange);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(200, 150, 29, 0.2);
+}
+
+/* Estado activo del botón */
+.stats-btn.active {
+  background: linear-gradient(135deg, var(--soft-orange) 0%, rgba(200, 150, 29, 0.9) 100%);
+  border-color: var(--soft-orange);
+  color: var(--off-white);
+  box-shadow: 0 6px 16px rgba(200, 150, 29, 0.4);
+}
+
+.stats-btn.active:hover {
+  box-shadow: 0 8px 20px rgba(200, 150, 29, 0.5);
+  transform: translateY(-3px);
+}
+
+/* Efecto ripple al clickear */
+.stats-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.stats-btn:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* ============================================================
+   CONTENEDOR DEL GRÁFICO
+   ============================================================ */
+
+.chart-wrapper {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background: var(--off-white);
+  border: 1px solid var(--grayish-blue);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(33, 33, 33, 0.08);
+  transition: box-shadow 0.3s ease;
+  margin-bottom: 30px;
+}
+
+.chart-wrapper:hover {
+  box-shadow: 0 8px 20px rgba(33, 33, 33, 0.12);
+}
+
+/* Contenedor canvas (responsivo) */
+.chart-wrapper canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ============================================================
+   INFORMACIÓN ADICIONAL
+   ============================================================ */
+
+.stats-info {
+  text-align: center;
+  padding: 15px;
+  background-color: rgba(200, 150, 29, 0.05);
+  border-left: 4px solid var(--soft-orange);
+  border-radius: 6px;
+}
+
+.stats-info p {
+  font-size: 0.85rem;
+  color: var(--dark-grayish-blue);
+  margin: 0;
+}
+
+.stats-info small {
+  font-style: italic;
+}
+
+/* ============================================================
+   ANIMACIONES
+   ============================================================ */
+
+@keyframes chart-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.chart-wrapper {
+  animation: chart-fade-in 0.6s ease 0.2s both;
+}
+
+/* ============================================================
+   RESPONSIVO - TABLETS (768px y menos)
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .stats-section {
+    padding: 40px 15px;
+    margin: 30px 0;
+  }
+
+  .stats-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .stats-header p {
+    font-size: 0.9rem;
+  }
+
+  .stats-controls {
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+
+  .stats-btn {
+    padding: 10px 18px;
+    font-size: 0.85rem;
+  }
+
+  .chart-wrapper {
+    height: 350px;
+    padding: 20px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVO - MÓVIL (480px y menos)
+   ============================================================ */
+
+@media (max-width: 480px) {
+  .stats-section {
+    padding: 30px 12px;
+    margin: 20px 0;
+  }
+
+  .stats-header {
+    margin-bottom: 30px;
+  }
+
+  .stats-header h2 {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+  }
+
+  .stats-header p {
+    font-size: 0.8rem;
+  }
+
+  .stats-controls {
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 25px;
+  }
+
+  .stats-btn {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 0.8rem;
+  }
+
+  .chart-wrapper {
+    height: 280px;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .stats-info {
+    padding: 12px;
+    border-left-width: 3px;
+  }
+
+  .stats-info p {
+    font-size: 0.75rem;
+  }
+}
+
+/* ============================================================
+   EFECTO DE TRANSICIÓN SUAVE AL CAMBIAR GRÁFICO
+   ============================================================ */
+
+.chart-transition {
+  animation: chart-fade-in 0.4s ease;
+}
+
+/* Hover effect en el contenedor */
+@media (hover: hover) {
+  .stats-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .chart-wrapper {
+    transition: all 0.3s ease;
+  }
+}
