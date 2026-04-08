@@ -277,3 +277,116 @@
     transition: all 0.3s ease;
   }
 }
+
+/* ============================================================
+   RED INTERACTIVA DE NODOS - LEARNING NETWORK SECTION
+   ============================================================ */
+
+.learning-network-section {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  margin: 60px 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  background-color: #1a1a2e; /* Fondo oscuro base */
+}
+
+#networkCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Capa de contenido superpuesto */
+.content-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+  max-width: 600px;
+  padding: 40px;
+  background: rgba(26, 26, 46, 0.4); /* Mucho más transparente */
+  backdrop-filter: blur(3px);
+  border-radius: 12px;
+  border: 1px solid rgba(200, 150, 29, 0.2);
+  animation: fade-in-up 0.8s ease 0.3s both;
+  pointer-events: none; /* Crucial: permite que el ratón llegue al canvas */
+}
+
+.content-overlay h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--off-white);
+  margin-bottom: 15px;
+  font-family: var(--primary-font);
+  letter-spacing: -0.5px;
+  pointer-events: auto;
+}
+
+.content-overlay p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 25px;
+  font-family: var(--secundary-font);
+  line-height: 1.6;
+  pointer-events: auto;
+}
+
+.content-overlay button {
+  padding: 14px 40px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--off-white);
+  background: linear-gradient(135deg, var(--soft-orange) 0%, var(--soft-red) 100%);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--secundary-font);
+  box-shadow: 0 4px 15px rgba(200, 150, 29, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  pointer-events: auto; /* El botón DEBE ser clicable */
+}
+
+.content-overlay button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(200, 150, 29, 0.5);
+}
+
+/* ============================================================
+   ANIMACIONES
+   ============================================================ */
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* ============================================================
+   RESPONSIVO
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .learning-network-section {
+    height: 500px;
+  }
+  .content-overlay {
+    max-width: 90%;
+    padding: 30px;
+  }
+  .content-overlay h1 {
+    font-size: 1.8rem;
+  }
+}
+

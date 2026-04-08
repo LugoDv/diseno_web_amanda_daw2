@@ -18,8 +18,8 @@
       <header>
         <span><img src="./assets/images/logo.svg" class="zoom-in-down" alt="" srcset="" /></span>
         <nav class="nav">
-          <a id="nav-inicio" href="">Inicio</a>
-          <a id="nav-cursos" href="sugerencias.html"></a>
+          <a id="nav-inicio" href="#">Inicio</a>
+          <a id="nav-cursos" href="#cursos-section">Cursos</a>
           <a id="nav-contacto" href="contact.html">Contacto</a>
           <select id="selector-idiomas">
             <option value="es">Español</option>
@@ -51,7 +51,18 @@
       </div>
       </div>
       <main>
-        <div class="cards">
+        <!-- SECCIÓN RED INTERACTIVA - BLOQUE DE GRÁFICOS DE ALTO RENDIMIENTO (PRACTICA 13) -->
+        <section class="learning-network-section">
+          <canvas id="networkCanvas"></canvas>
+          
+          <div class="content-overlay">
+            <h1 id="network-title">Conecta con tu Futuro Profesional</h1>
+            <p id="network-desc">Explora nuestros cursos y forma parte de la red tecnológica más grande.</p>
+            <a href="#cursos-section" id="network-btn" class="btn">Ver Cursos</a>
+          </div>
+        </section>
+
+        <div id="cursos-section" class="cards">
           <div class="card">
             <div class="image">
               <img src="./assets/SVG/Pacheco.svg" alt="" srcset="" class="elemento-flotante" />
@@ -93,6 +104,8 @@
             </div>
           </div>
         </div>
+        
+                
         <section class="call-to-action">
           <div class="img-action">
             <!--6.3 implemento picture para cambiar la imagen segun la resolución -->
@@ -184,6 +197,7 @@
             </button>
           </form>
         </section>
+
       </main>
       <footer>
         <div class="footer-container">

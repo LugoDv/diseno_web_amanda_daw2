@@ -412,3 +412,191 @@ window.chartDebug = {
 };
 
 console.log('💡 Tip: Usa window.chartDebug.logInfo() para ver información del gráfico');
+
+/* ============================================================
+   RED INTERACTIVA DE NODOS ELÁSTICOS - TECNOLOGÍA ALTO RENDIMIENTO
+   Física de muelle, repulsión y retorno a posición original.
+   ============================================================ */
+
+const networkCanvas = document.getElementById('networkCanvas');
+let networkCtx = null;
+
+if (networkCanvas) {
+  networkCtx = networkCanvas.getContext('2d');
+  
+  const networkProperties = {
+    nodeColor: '#C8961D',
+    lineColor: 'rgba(200, 150, 29, 0.15)',
+    gridSpacing: 40,      // Espacio entre nodos en la cuadrícula
+    mouseRadius: 150,     // Radio de influencia del ratón
+    friction: 0.9,        // Resistencia al movimiento
+    elasticity: 0.05,     // Fuerza de retorno a la base
+    repulsion: 1.2        // Fuerza de empuje del ratón
+  };
+
+  let networkMouse = { x: null, y: null };
+  let networkNodes = [];
+  let dpr = window.devicePixelRatio || 1;
+
+  /* ============================================================
+     CLASE: ElasticParticle (Partícula con física de muelle)
+     ============================================================ */
+  class ElasticParticle {
+    constructor(x, y) {
+      this.baseX = x;     // Posición de reposo (X)
+      this.baseY = y;     // Posición de reposo (Y)
+      this.x = x;         // Posición actual (X)
+      this.y = y;         // Posición actual (Y)
+      this.vx = 0;        // Velocidad (X)
+      this.vy = 0;        // Velocidad (Y)
+    }
+
+    update() {
+      // 1. Fuerza de muelle (intentar volver a baseX, baseY)
+      let dxBase = this.baseX - this.x;
+      let dyBase = this.baseY - this.y;
+      
+      this.vx += dxBase * networkProperties.elasticity;
+      this.vy += dyBase * networkProperties.elasticity;
+
+      // 2. Interacción con el ratón (repulsión)
+      if (networkMouse.x !== null) {
+        let dxMouse = this.x - networkMouse.x;
+        let dyMouse = this.y - networkMouse.y;
+        let dist = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
+        
+        if (dist < networkProperties.mouseRadius) {
+          let force = (networkProperties.mouseRadius - dist) / networkProperties.mouseRadius;
+          // El ángulo del vector de empuje
+          this.vx += (dxMouse / dist) * force * networkProperties.repulsion * 10;
+          this.vy += (dyMouse / dist) * force * networkProperties.repulsion * 10;
+        }
+      }
+
+      // 3. Aplicar fricción y movimiento
+      this.vx *= networkProperties.friction;
+      this.vy *= networkProperties.friction;
+      this.x += this.vx;
+      this.y += this.vy;
+    }
+
+    draw() {
+      networkCtx.beginPath();
+      networkCtx.arc(this.x, this.y, 1.5, 0, Math.PI * 2);
+      networkCtx.fillStyle = networkProperties.nodeColor;
+      networkCtx.fill();
+    }
+  }
+
+  /* ============================================================
+     FUNCIÓN: Inicializar Red (Grid)
+     ============================================================ */
+  function initNetworkGrid() {
+    networkNodes = [];
+    const w = networkCanvas.logicalWidth;
+    const h = networkCanvas.logicalHeight;
+    const spacing = networkProperties.gridSpacing;
+
+    // Crear una cuadrícula de puntos
+    for (let y = spacing; y < h; y += spacing) {
+      for (let x = spacing; x < w; x += spacing) {
+        networkNodes.push(new ElasticParticle(x, y));
+      }
+    }
+    console.log(`✅ Red elástica inicializada: ${networkNodes.length} nodos`);
+  }
+
+  /* ============================================================
+     FUNCIÓN: Redimensionar y Configurar Resolución (HD)
+     ============================================================ */
+  function resizeNetworkCanvas() {
+    const parent = networkCanvas.parentElement;
+    const rect = parent.getBoundingClientRect();
+    dpr = window.devicePixelRatio || 1;
+
+    // Tamaño lógico (CSS)
+    networkCanvas.style.width = rect.width + 'px';
+    networkCanvas.style.height = rect.height + 'px';
+    networkCanvas.logicalWidth = rect.width;
+    networkCanvas.logicalHeight = rect.height;
+
+    // Tamaño real (Píxeles HD)
+    networkCanvas.width = rect.width * dpr;
+    networkCanvas.height = rect.height * dpr;
+    
+    // Escalar contexto una sola vez
+    networkCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    initNetworkGrid();
+  }
+
+  /* ============================================================
+     EVENTOS DE RATÓN
+     ============================================================ */
+  window.addEventListener('mousemove', (e) => {
+    const rect = networkCanvas.getBoundingClientRect();
+    networkMouse.x = e.clientX - rect.left;
+    networkMouse.y = e.clientY - rect.top;
+  });
+
+  window.addEventListener('mouseout', () => {
+    networkMouse.x = null;
+    networkMouse.y = null;
+  });
+
+  window.addEventListener('resize', resizeNetworkCanvas);
+
+  /* ============================================================
+     FUNCIÓN: Dibujar Conexiones (Malla Elástica)
+     ============================================================ */
+  function drawElasticGrid() {
+    networkCtx.beginPath();
+    networkCtx.strokeStyle = networkProperties.lineColor;
+    networkCtx.lineWidth = 0.5;
+
+    // Solo dibujamos líneas entre partículas que estén a una distancia razonable
+    const maxDist = networkProperties.gridSpacing * 1.5;
+
+    for (let i = 0; i < networkNodes.length; i++) {
+      const p1 = networkNodes[i];
+      
+      for (let j = i + 1; j < networkNodes.length; j++) {
+        const p2 = networkNodes[j];
+        const dx = p1.x - p2.x;
+        const dy = p1.y - p2.y;
+        const distSq = dx * dx + dy * dy;
+
+        if (distSq < maxDist * maxDist) {
+          networkCtx.moveTo(p1.x, p1.y);
+          networkCtx.lineTo(p2.x, p2.y);
+        }
+      }
+    }
+    networkCtx.stroke();
+  }
+
+  /* ============================================================
+     FUNCIÓN: Bucle de Animación
+     ============================================================ */
+  function animateNetwork() {
+    // Fondo oscuro sólido para rendimiento máximo
+    networkCtx.fillStyle = '#1a1a2e';
+    networkCtx.fillRect(0, 0, networkCanvas.logicalWidth, networkCanvas.logicalHeight);
+
+    // Actualizar y dibujar nodos
+    networkNodes.forEach(node => {
+      node.update();
+      node.draw();
+    });
+
+    // Dibujar la malla de conexiones
+    drawElasticGrid();
+
+    requestAnimationFrame(animateNetwork);
+  }
+
+  // Inicio
+  resizeNetworkCanvas();
+  requestAnimationFrame(animateNetwork);
+}
+

@@ -94,6 +94,21 @@ const translations = {
     es: "Ver curso",
     en: "View course",
   },
+  "network-title": {
+    ca: "Connecta amb el teu futur professional",
+    es: "Conecta con tu Futuro Profesional",
+    en: "Connect with your professional future",
+  },
+  "network-desc": {
+    ca: "Explora els nostres cursos i forma part de la xarxa tecnològica més gran.",
+    es: "Explora nuestros cursos y forma parte de la red tecnológica más grande.",
+    en: "Explore our courses and be part of the largest technology network.",
+  },
+  "network-btn": {
+    ca: "Veure cursos",
+    es: "Ver Cursos",
+    en: "View Courses",
+  },
 };
 
 // Cargar idioma guardado al iniciar
@@ -140,6 +155,9 @@ function setLanguage(lang) {
     "contact-email",
     "contact-message",
     "contact-submit",
+    "network-title",
+    "network-desc",
+    "network-btn",
   ];
 
   elementIds.forEach((id) => {
