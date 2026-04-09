@@ -2,15 +2,18 @@
 
 Este proyecto es una pequeña página web estática creada como ejercicio de diseño web.
 
+## Implementaciones nuevas (resumen)
+
+- Integración de **Chart.js** para mostrar métricas de cursos de forma visual e interactiva.
+- Uso de **Canvas** en una sección dinámica para añadir efectos/gráficos en la interfaz.
+
 ## Enfoque de diseño
 
 - Implementación: Desktop-first.
-
   - Esto significa que los estilos base están pensados para pantallas de escritorio y luego se aplican reglas condicionales para pantallas más pequeñas.
   - Para adaptar el diseño a dispositivos con pantallas más estrechas utilicé media queries (con `max-width`) que reducen o reorganizan estilos cuando la ventana es menor que ciertos anchos.
 
 - Breakpoints (asumidos / usados):
-
   - `max-width: 1024px` — para tablets grandes / pantallas intermedias
   - `max-width: 768px` — para tablets pequeñas y móviles grandes
   - `max-width: 480px` — para móviles pequeños
@@ -30,6 +33,7 @@ Los estilos base están escritos pensando en escritorio; las media queries se a�
 ## Uso de jQuery
 
 Este proyecto utiliza jQuery para:
+
 - Manipulación del DOM.
 - Manejo de eventos.
 - Funcionalidades interactivas en el frontend.
